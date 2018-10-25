@@ -26,6 +26,7 @@ import java.io.Reader;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.math.BigDecimal;
 
 
 /**
@@ -343,6 +344,20 @@ public abstract class JsonValue implements Serializable {
    *           if this JSON number can not be interpreted as <code>int</code> value
    */
   public int asInt() {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+
+  /**
+   * Returns this JSON value as a {@link BigDecimal} value, assuming that this value represents a
+   * JSON number. If this is not the case, an exception is thrown.
+   *
+   * @return this value as {@link BigDecimal}
+   * @throws UnsupportedOperationException
+   *           if this value is not a JSON number
+   * @throws NumberFormatException
+   *           if this JSON number can not be interpreted as <code>int</code> value
+   */
+  public BigDecimal asBigDecimal() {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
 

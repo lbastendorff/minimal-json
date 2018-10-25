@@ -23,6 +23,7 @@ package com.eclipsesource.json;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.math.BigDecimal;
 
 
 /**
@@ -81,6 +82,17 @@ public final class Json {
    */
   public static JsonValue dynamic(final JsonAware value) {
     return new JsonDynamicValue(value);
+  }
+
+  /**
+   * Returns a JsonValue instance that represents the given {@link BigDecimal} value.
+   *
+   * @param value
+   *          the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue decimal(final BigDecimal value) {
+    return new JsonNumber(value.toPlainString());
   }
 
   /**

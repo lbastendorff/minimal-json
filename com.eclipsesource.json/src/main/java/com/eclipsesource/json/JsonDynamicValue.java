@@ -23,6 +23,7 @@ package com.eclipsesource.json;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.math.BigDecimal;
 
 /**
  * @see JsonAware
@@ -112,6 +113,11 @@ public class JsonDynamicValue extends JsonValue
   @Override
   public long asLong() {
     return getWrappedValue().asLong();
+  }
+
+  @Override
+  public BigDecimal asBigDecimal() {
+    return getWrappedValue().asBigDecimal();
   }
 
   @Override

@@ -22,6 +22,7 @@
 package com.eclipsesource.json;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 
 @SuppressWarnings("serial") // use default serial UID
@@ -69,6 +70,11 @@ class JsonNumber extends JsonValue {
   @Override
   public double asDouble() {
     return Double.parseDouble(string);
+  }
+
+  @Override
+  public BigDecimal asBigDecimal() {
+    return new BigDecimal(string);
   }
 
   @Override
