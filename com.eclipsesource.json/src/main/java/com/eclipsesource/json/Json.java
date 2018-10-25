@@ -73,6 +73,17 @@ public final class Json {
   public static final JsonValue FALSE = new JsonLiteral("false");
 
   /**
+   * Returns a JsonValue instance that represents the given {@link JsonAware} object.
+   *
+   * @param value
+   *          the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue dynamic(final JsonAware value) {
+    return new JsonDynamicValue(value);
+  }
+
+  /**
    * Returns a JsonValue instance that represents the given <code>int</code> value.
    *
    * @param value

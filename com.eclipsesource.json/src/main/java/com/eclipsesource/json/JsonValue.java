@@ -279,6 +279,31 @@ public abstract class JsonValue implements Serializable {
   }
 
   /**
+   * Detects whether this value is a dynamic {@link JsonAware} object and also subclass of the given type.<BR>
+   * This can only occur if this JSON object has been built locally and not serialised, a deserialised form can only contain real JSON types.
+   *
+   * @param jaCls The {@link JsonAware} subclass type to test this dynamic value against, to test for any dynamic value pass {@link JsonAware}.class
+   * @return <code>true</code> if this value represents a JsonAware subclass for this value
+   */
+  public boolean isDynamicValue(final Class<? extends JsonAware> jaCls) {
+    return false;
+  }
+
+  /**
+   * Returns the dynamic object backing this JSON value.<BR>
+   * This can only occur if this JSON object has been built locally and not serialised, a deserialised form can only contain real JSON types.
+   *
+   * @param jaCls The {@link JsonAware} subclass type to cast this dynamic value into
+   * @return a JsonAware subclass for this value
+   * @throws UnsupportedOperationException
+   *           if this value is not a {@link JsonAware} object and does not inherit from the passed subclass type
+   */
+  public <JA extends JsonAware> JA getDynamicValue(final Class<JA> jaCls)
+  {
+    throw new UnsupportedOperationException("Not a JsonAware object: " + toString());
+  }
+
+  /**
    * Returns this JSON value as {@link JsonObject}, assuming that this value represents a JSON
    * object. If this is not the case, an exception is thrown.
    *
